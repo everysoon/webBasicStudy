@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Templaing</h1>
+    <h3>
+      : 반복적인 HTML부분을 template로 만들어두고, 서버에서 온 데이터(주로
+      JSON)을 결합해서 화면에 추가하는 작업 -> HTML 구조 포멧!
+    </h3>
+    <img src="images/templaing.PNG" alt="" />
+    <p>
+      <b>HTML Template 보관 : </b> 서버에서 file로 보관하고 Ajax로 요청해서
+      받아오거나 HTML 코드안에 숨겨둔다(우리가 쓸 방법)
+    </p>
+    <p>
+      <b>script 태그는 type이 javascript가 아니라면 렌더링하지않고 무시한다.</b>
+      : 이것을 이용!
+    </p>
+    <h2>template test example</h2>
+
+    <script id="template-list-item" type="txt/template">
+      <li>
+        <h4>{title}</h4><p>{content}</p><div>{age}</div>
+      </li>
+    </script>
+
+    <script>
+      var data = [
+        {
+          title: "soon~",
+          content: "minsoon study",
+          age: 25,
+        },
+        {
+          title: "min~",
+          content: "화이팅",
+          age: 25,
+        },
+      ];
+      /* var html = "<li><h4>{title}</h4><p>{content}</p><div>{age}</div></li>";
+      var result = html
+        .replace("{title}", data.title)
+        .replace("{content}", data.content)
+        .replace("{age}", data.age);
+      document.write(result); */
+
+      /* 데이터가 여러개라면 -> 반복문을 사용해서 할 수 있따! */
+      /* text/template 로 지정해준 타입의 script에 숨겨둔 template 사용하기 */
+      var html = document.querySelector("#template-list-item").innerHTML;
+      var result = "";
+      for (var i = 0; i < data.length; i++) {
+        result += html
+          .replace("{title}", data[i].title)
+          .replace("{content}", data[i].content)
+          .replace("{age}", data[i].age);
+        document.write(result);
+      }
+    </script>
+  </body>
+</html>

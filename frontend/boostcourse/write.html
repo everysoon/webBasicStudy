@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="editor.css" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <style>
+      #leftWriteBox {
+        width: 75%;
+      }
+      #rightWriteBox {
+        width: 25%;
+      }
+      #buttonBox button {
+        margin-top: 15px;
+        padding: 10px 25px;
+      }
+      .sidebar {
+        margin: 30px auto;
+        width: 100%;
+      }
+      #settingContent{
+     
+      }
+      #writeSettingBar{
+          border-bottom: 1px solid gray;
+      }
+      #tagSetting{
+        background-color: #bbb;
+          height: 300px;
+          padding:10px;
+          margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; height: 927px">
+      <div id="leftWriteBox" class="w3-container">
+        <div
+          style="
+            padding: 10px;
+            text-align: center;
+            margin-top: 10px;
+            border-bottom: 1px solid gray;
+          "
+        >
+        <div style="display: flex;">
+        <select class="w3-select" style="width: 400px; margin-right: auto; " name="" id="">
+            <option value="" disabled selected>게시판을 선택해주세요</option>
+            <option value="">커뮤니티</option>
+            <option value="">칼럼</option>
+            <option value="">IT/News</option>
+            <option value="">Tips/강좌</option>
+            <option value="">포토폴리오</option>
+        </select>
+        <span style="padding:10px;"><b>userName</b>님의 글쓰기</span>
+    </div>
+          <input
+          class="w3-input"
+            type="text"
+            style="
+          margin-top: 10px;
+            "
+            placeholder="글 제목"
+          />
+         
+        </div>
+        <div style="margin: 20px 0px 10px 20px">
+          <button class="w3-btn w3-white w3-hover-blue-gray w3-round">
+            글쓰기
+          </button>
+          <button class="w3-btn w3-white w3-hover-blue-gray w3-round">
+            HTML
+          </button>
+        </div>
+
+        <div class="editor"></div>
+      </div>
+
+      <div id="rightWriteBox">
+        <div id="buttonBox" style="text-align: center">
+          <button class="w3-btn w3-hover-blue-gray w3-white w3-round">
+            게시
+          </button>
+          <button class="w3-btn w3-hover-blue-gray w3-white w3-round">
+            저장
+          </button>
+          <button class="w3-btn w3-hover-blue-gray w3-white w3-round">
+            미리보기
+          </button>
+          <button class="w3-btn w3-hover-blue-gray w3-white w3-round">
+            닫기
+          </button>
+        </div>
+        <div class="sidebar">
+          <div id="writeSettingBar" class="w3-round w3- w3-padding-16 w3-hover-amber" style="margin-top: 10px;"><span style="padding-left: 20px;"><i class="fa fa-caret-down"></i> 글 설정</span> </div>
+        
+          <div id="settingContent"  >
+            <div id="tagSetting">
+            <i id="tagLabel" class="fa fa-tags">&nbsp;&nbsp;태그</i>
+            <div>
+            <textarea style="margin-top: 15px;" name="" id="" cols="30" rows="5"></textarea>
+            <p  class="w3-margin-left" style="font-size: 16px;">쉼표로 라벨을 구분하세요. <button class="w3-btn w3-white w3-hover-amber w3-margin-left" type="submit">완료</button></p>
+            </div>
+            <div id="tagSubmitText" style="display: none;">tagSubmitText</div>
+            </div>
+        
+          </div>
+      
+          </select>
+        </div>
+      </div>
+    </div>
+    <script src="ckeditor.js"></script>
+    <script>
+      ClassicEditor.create(document.querySelector(".editor"), {
+        toolbar: {
+          items: [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "|",
+            "outdent",
+            "indent",
+            "|",
+            "imageUpload",
+            "blockQuote",
+            "insertTable",
+            "mediaEmbed",
+            "undo",
+            "redo",
+          ],
+        },
+        language: "ko",
+        licenseKey: "",
+        sidebar: {
+          container: document.querySelector(".sidebar"),
+        },
+      })
+        .then((editor) => {
+          window.editor = editor;
+        })
+        .catch((error) => {
+          console.error("Oops, something went wrong!");
+          console.error(
+            "Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:"
+          );
+          console.warn("Build id: 62kyxpgu8v95-nohdljl880ze");
+          console.error(error);
+        });
+        $("#writeSettingBar").click(function(){
+            console.log("??");
+            $(this).next("#settingContent").slideToggle(100);
+        });
+        $("#tagLabel").click(function(){
+            $(this).next().slideToggle(200,function(){
+                if($(this).css("display")=="none"){
+                    $("#tagSetting").css("height","80");
+                    $("#tagSubmitText").css("display","block");
+                }else{
+                    $("#tagSetting").css("height","300");
+                    $("#tagSubmitText").css("display","none");
+             
+                }
+                
+            });
+        });
+    </script>
+  </body>
+</html>

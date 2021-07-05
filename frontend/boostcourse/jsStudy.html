@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <h1>data Function</h1>
+    <h2>ForEach</h1>
+    <h2>map : 새로운 배열 반환</h1>
+    <h2>filter</h2>
+    
+    <script>
+      var data = [
+        {
+          title: "hello",
+          content: "간지철철",
+          price: 12000,
+        },
+        {
+          title: "crong",
+          content: "괜춘한 상품",
+          price: 5500,
+        },
+        {
+          title: "codesquad",
+          content: "쩌는상품",
+          price: 15000,
+        },
+      ];
+      function dataPrint(data){
+          data.forEach(function(v){
+            console.log(v.title,v.content,v.price);
+          });
+      }
+      for (var i = 0; i < data.length; i++) {
+        console.log(data[i].title, data[i].content, data[i].price);
+      }
+      dataPrint(data);
+      var newData = data.map(function(v){
+        var obj ={ title:v.title,content:v.content,price:v.price*10};
+        return obj;
+      });
+      dataPrint(newData);
+      var filterData = data.filter(function(v){
+        return v.price>10000;
+      });
+      dataPrint(filterData);
+    </script>
+    <h2>객체의 리터럴과 this</h2>
+    <h2>bind함수</h2>
+    <script>
+        var health ={
+            name:"달리기",
+            lastTime:"PM10:12",
+            showHealth:function(){
+                setTimeout(function(){
+                    console.log(this.name +"님 오늘은" +this.lastTime+"에 운동하셨네유");
+                }.bind(this),500);
+            }
+        }
+        health.showHealth();
+    </script>
+  </body>
+</html>
