@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>방명록</h1>
-<br>방명록 전체수 : ${count }
+<br>방명록 전체수 : ${count } , 방문자수 : ${cookieCount }
 <br>
 <br>
 <c:forEach items="${list }" var="guestbook">
@@ -17,7 +17,9 @@ ${guestbook.id }<br>
 ${guestbook.name }<br>
 ${guestbook.content }<br>
 ${guestbook.regdate }<br>
-
+<c:if test="${sessionScope.isAdmin == 'true' }">
+<a href="delete?id=${guestbook.id }">삭제</a>
+</c:if>
 </c:forEach>
 <br>
 <c:forEach items="${pageStartList }" var="pageIndex" varStatus="status">
@@ -31,6 +33,8 @@ name : <input type="text" name="name"><br>
 <br>
 <input type="submit" value="작성">
 </form>
-
+<c:if test="${registerFail } eq 'true'">
+<h1>login 실패</h1>
+</c:if>
 </body>
 </html>

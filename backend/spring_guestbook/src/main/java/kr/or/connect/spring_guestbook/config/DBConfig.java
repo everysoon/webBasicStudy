@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 @EnableTransactionManagement
 public class DBConfig  implements TransactionManagementConfigurer{
 	private String diverClassName="com.mysql.jdbc.Driver";
-	private String url="jdbc:mysql://localhost:3306/springDB?useUnicode=true&characterEncoding=utf8";
+	private String url="jdbc:mysql://localhost:3306/springDB?useUnicode=true&characterEncoding=utf8&useSSL=false";
 	private String username="root";
 	private String password ="ict01";
 	@Bean
