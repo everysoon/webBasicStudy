@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+      h2,h4 {
+        margin: 0px;
+      }
+
+      .tab {
+        width: 600px;
+        margin: 0px auto;
+      }
+      .tabmenu {
+        background-color: pink;
+      }
+      .tabmenu > div {
+        display: inline-block;
+        width: 130px;
+        cursor:pointer;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+
+      }
+      .content {
+          padding:5%;
+        background-color: antiquewhite;
+      }
+    </style>
+    <link rel="stylesheet" href="css/tabui.css">
+  </head>
+  <body>
+    <h2>Tab UI</h1>
+    <div class="tab">
+      <div class="tabmenu">
+        <div>crong</div>
+        <div>jk</div>
+        <div>pobi</div>
+        <div>honux</div>
+      </div>
+      <section class="content">
+        <h4>hello jk</h4>
+        <p >golf, facebook</p>
+      </section>
+    </div>
+    <script>
+        function makeTemplete(data,clickedName){
+            var html = document.getElementById("tabContent").innerHTML;
+            var resultHTML ="";
+            for(var i =0, len=data.length; i<len; i++){
+                if(data[i].name === clickedName){
+                resultHTML = html.replace("{name}",data[i].name)
+                .replace("{favorites}",data[i].favorites.join(" "));
+                break;
+                }
+            }
+            console.log(resultHTML);
+        function sendAjax(url,clickedName){
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load",function(){
+                var data = JSON.parse(oReq.responseText);
+                makeTemplete(data,clickedName);
+            });
+            oReq.open("GET",url);
+            oReq.send();
+        }
+        var tabmenu = document.querySelector(".tabmenu");
+        tabmenu.addEventListener("click",function(evt){
+            // Ajax코드 이용 
+            sendAjax("json.txt",evt.target.innerText);
+        });
+      }
+    </script>
+    <script type="text/temp" id="tabContent">
+    <h4>hello {name} !</h4>
+    <p>{favorites}</p>
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        display: flex;
+      }
+      li {
+        border: 1px solid pink;
+        margin-left: 20px;
+        margin-right: 20px;
+        list-style-type: none;
+      }
+      img {
+        border: 1px solid blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event delegation, Bubbling</h1>
+    <p>Bubbling : ul에 이벤트를 추가해도 자식인 li나 img에도 적용가능</p>
+    <ul>
+      <li>
+        <img src="images/image1.jpg" alt="" />
+      </li>
+      <li>
+        <img src="images/image2.jpg" alt="" />
+      </li>
+      <li>
+        <img src="images/image3.jpg" alt="" />
+      </li>
+    </ul>
+    <section class="log"></section>
+    <script src="js/bubbling.js"></script>
+  </body>
+</html>

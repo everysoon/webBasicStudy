@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/w3.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+      #noticeItem {
+        text-align: center;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="w3-centered w3-table-all" style="width: 70%; margin: auto">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th class="title">제목</th>
+          <th>작성자</th>
+          <th>작성 날짜</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <script type="text/myNoticeTemplete" id="notice-item">
+      <tr  class="w3-hover-pink noticeItem">
+        <td>{{id}}</td><td>{{title}}</td><td>{{writer}}</td><td>{{regDate}}</td>
+      </tr>
+      <tr class="hide">
+        <td colspan="3">{{content}}</td>
+        <td></td>
+
+      </tr>
+    </script>
+    <script>
+      var noticeData = [
+        {
+          id: 1,
+          title: "공지사항이당",
+          content:
+            "공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠",
+          writer: "soon",
+          regDate: "2021-07-02 00:32:33",
+        },
+        {
+          id: 2,
+          title: "공지사항이당!!!!!",
+          content:
+            "공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!공지내용이이떠!!!!",
+          writer: "min",
+          regDate: "2021-07-02 00:32:33",
+        },
+        {
+          id: 3,
+          title: "모라쓰지",
+          content:
+            "공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용공지내용이이떠용",
+          writer: "park",
+          regDate: "2021-07-02 00:32:33",
+        },
+        {
+          id: 4,
+          title: "공지이쑤",
+          content:
+            "공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠",
+          writer: "soon",
+          regDate: "2021-07-02 00:32:33",
+        },
+        {
+          id: 5,
+          title: "공지사항이당",
+          content:
+            "여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!여 이따!",
+          writer: "soon",
+          regDate: "2021-07-02 00:32:33",
+        },
+        {
+          id: 6,
+          title: "졸리다..",
+          content:
+            "공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠공지내용이이떠",
+          writer: "soon",
+          regDate: "2021-07-02 00:32:33",
+        },
+      ];
+      var templete = document.querySelector("#notice-item").innerText;
+      var bindTemplete = Handlebars.compile(templete);
+      var result = noticeData.reduce(function (prev, next) {
+        console.log(prev + "," + next);
+        return prev + bindTemplete(next);
+      }, "");
+      var tableBody = document.querySelector("#tableBody");
+      tableBody.innerHTML = result;
+      $(".noticeItem").click(function () {
+        $(this).next("tr").slideToggle(200);
+      });
+    </script>
+  </body>
+</html>
