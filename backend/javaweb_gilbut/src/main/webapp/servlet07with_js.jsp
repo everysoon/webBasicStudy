@@ -11,7 +11,7 @@
 	<form name="formLogin">
 		id : <input type="text" name="id"> <br> password : <input
 			type="text" name="password"><br> email : <input
-			type="text" name="email"><br> <input type="button"
+			type="text" name="email" ><br> <input type="button"
 			onclick="myClick()" value="전송">
 		<p style="color: red; font-size: '20px';" id="errorMsg">
 	</form>
