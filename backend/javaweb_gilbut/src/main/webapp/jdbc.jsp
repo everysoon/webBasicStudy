@@ -7,5 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("jdbc.jsp");
-%>
+<form action="/memberConn" method="get">
+<input type="submit" value="get요청"></input>
+</form>
+</body>
+</html>
