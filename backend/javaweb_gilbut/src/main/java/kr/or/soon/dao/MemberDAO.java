@@ -69,4 +69,93 @@ public class MemberDAO {
 		}
 		return list;
 	}
+	public List<Member> searchList(Member m){
+		List<Member> list= new ArrayList<>();
+		try {
+			Context context = new InitialContext(); // JNDI에 접근하기 위한 기본경로 지정 ->java:/comp/env
+			Context envCon = (Context) context.lookup("java:/comp/env");
+
+			// 미리연결한 DataSource 받아오기
+			dataSource = (DataSource)envCon.lookup("jdbc/mysql");// 톰캣 context.xml에 설정한 name값
+			conn = dataSource.getConnection();
+			String sql ="select * from member";
+			String name = m.getM_name();
+			System.out.println("dao name : "+name);
+			if(name!=null&&name.length()!=0) {
+				// 검색할 이름이 있으면
+				sql += " where m_name = ?";
+				ps=conn.prepareStatement(sql);
+				System.out.println("sql문 ? : "+sql);
+				ps.setString(1, name);
+			}else {
+				ps =conn.prepareStatement(sql);
+			}
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Member temp = new Member();
+				temp.setM_idx(rs.getInt("m_idx"));
+				System.out.println("idx ? "+rs.getInt("m_idx"));
+				temp.setM_id(rs.getString("m_id"));
+				temp.setM_pwd(rs.getString("m_pwd"));
+				temp.setM_name(rs.getString("m_name"));
+				temp.setM_email(rs.getString("m_email"));
+				temp.setM_regDate(rs.getString("m_regdate"));
+				list.add(temp);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public boolean addMember(Member m){
+		boolean result = false;
+		try {
+			Context context = new InitialContext(); // JNDI에 접근하기 위한 기본경로 지정 ->java:/comp/env
+			Context envCon = (Context) context.lookup("java:/comp/env");
+			
+			// 미리연결한 DataSource 받아오기
+			dataSource = (DataSource)envCon.lookup("jdbc/mysql");// 톰캣 context.xml에 설정한 name값
+			conn = dataSource.getConnection();
+			int idx = 5; 
+			String sql = "insert into member values(?,?,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, String.valueOf(idx));
+			ps.setString(2, m.getM_id());
+			ps.setString(3, m.getM_pwd());
+			ps.setString(4, m.getM_name());
+			ps.setString(5, m.getM_email());
+			ps.setString(6, "2021-07-20");
+			idx++;
+			int cnt  = ps.executeUpdate();
+			result = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public boolean isExisted(Member m) {
+		boolean result =false;
+		String id = m.getM_id();
+		String password = m.getM_pwd();
+		try {
+			Context context = new InitialContext(); // JNDI에 접근하기 위한 기본경로 지정 ->java:/comp/env
+			Context envCon = (Context) context.lookup("java:/comp/env");
+
+			// 미리연결한 DataSource 받아오기
+			dataSource = (DataSource)envCon.lookup("jdbc/mysql");// 톰캣 context.xml에 설정한 name값
+			conn = dataSource.getConnection();
+			String sql = "select if(count(*)>=1,'true','false')as result from member where m_id =? and m_pwd =?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, password);
+			rs = ps.executeQuery();
+			rs.next(); // 커서를 첫번째 레코드로 위치시킴
+			result = Boolean.parseBoolean(rs.getString("result"));
+			System.out.println("result :"+result);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

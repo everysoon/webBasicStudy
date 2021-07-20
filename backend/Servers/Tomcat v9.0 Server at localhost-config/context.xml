@@ -24,8 +24,9 @@
 
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
-    <Manager pathname="" />
+ 
     -->
+   <Manager pathname="" /><!-- 세션이 메모리에서 삭제될 수 있도록  -->
    <Resource name="jdbc/mysql"
     auth="Container"
      type="javax.sql.DataSource" 
@@ -35,6 +36,6 @@
        username="root"
         password="ict01"
          driverClassName="com.mysql.jdbc.Driver" 
-         url="jdbc:mysql://localhost:3306/springDB"/>
+         url="jdbc:mysql://localhost:3306/springDB?useSSL=false"/>
 
 </Context>
