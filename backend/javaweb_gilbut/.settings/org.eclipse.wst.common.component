@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
         
+<<<<<<< HEAD
     <wb-module deploy-name="javaweb_gilbut-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                 
+=======
+    <wb-module deploy-name="javaweb_gilbut">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+>>>>>>> 7001214e0788b4c046fc1c6fa063420f83609eb0
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>

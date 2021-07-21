@@ -6,6 +6,7 @@
 	<display-name>javaweb_gilbut</display-name>
 	<context-param>
 		<param-name>menu_member</param-name>
+<<<<<<< HEAD
 		<param-value>회원등록 회원조회 회원수정</param-value>
 	</context-param>
 	<context-param>
@@ -15,6 +16,17 @@
 	<context-param>
 		<param-name>menu_goods</param-name>
 		<param-value>상품조회 상품등록 상품수정 상품삭제</param-value>
+=======
+		<param-value>member~</param-value>
+	</context-param>
+	<context-param>
+		<param-name>menu_order</param-name>
+		<param-value>order~</param-value>
+	</context-param>
+	<context-param>
+		<param-name>menu_goods</param-name>
+		<param-value>goods~!</param-value>
+>>>>>>> 7001214e0788b4c046fc1c6fa063420f83609eb0
 	</context-param>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

@@ -7,5 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("ajax/ajax02.jsp");
-%>
+<form action="/memberConn" method="get">
+<input type="submit" value="get요청"></input>
+</form>
+</body>
+</html>
