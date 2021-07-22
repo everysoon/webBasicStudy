@@ -1,0 +1,15 @@
+create table member(
+m_idx NUMBER not null primary key ,
+m_id varchar(10) ,
+m_pwd varchar(20),
+m_name varchar(20),
+m_email varchar(30),
+m_regdate date default sysdate
+);
+insert into member values (id_seq.NEXTVAL,'everysoon','1111','minsun','min@naver.com',sysdate);
+select * from member;
+delete from member;
+create SEQUENCE id_seq
+  INCREMENT BY 1 MAXVALUE 5000 CYCLE;
+
+----------------------------------------------------------------------

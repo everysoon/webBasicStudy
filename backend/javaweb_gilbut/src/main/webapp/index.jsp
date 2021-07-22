@@ -7,5 +7,5 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("ajax/ajax02.jsp");
+<% response.sendRedirect("member/listMembers.jsp");
 %>

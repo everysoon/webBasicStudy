@@ -1,6 +1,6 @@
 <%@page import="kr.or.soon.dto.Member"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.or.soon.dao.MemberDAO"%>
+<%@page import="kr.or.soon.dao.MemberDAO_MySql"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ String reqeustName = request.getParameter("name");
 Member m = new Member();
 m.setM_name(reqeustName);
 
-MemberDAO dao = new MemberDAO();
+MemberDAO_MySql dao = new MemberDAO_MySql();
 List<Member> list = dao.searchList(m);
 %>
 <table border=1 width=800 align=center>

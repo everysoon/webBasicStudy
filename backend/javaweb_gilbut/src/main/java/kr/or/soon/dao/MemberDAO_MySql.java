@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 
 import kr.or.soon.dto.Member;
 
-public class MemberDAO {
-	public static final String url ="jdbc:mysql://localhost/springDB";
+public class MemberDAO_MySql {
+	public static final String url ="jdbc:mysql://localhost/springDB?useSSL=false";
 	public static final String user ="root";
 	public static final String pwd ="ict01";
 	
@@ -37,15 +37,16 @@ public class MemberDAO {
 		List<Member> list = new ArrayList<>();
 		try {
 			connDB();
-			String sql = "select * from member";
+			String sql = "select * from member order by m_regdate desc";
 			ps = conn.prepareStatement(sql);
 			rs= ps.executeQuery();
 			while(rs.next()) {
 				Member m = new Member();
-				m.setM_id(rs.getString(1));
-				m.setM_pwd(rs.getString(2));
-				m.setM_name(rs.getString(3));
-				m.setM_email(rs.getString(4));
+				m.setM_idx(rs.getInt("m_idx"));
+				m.setM_id(rs.getString("m_id"));
+				m.setM_pwd(rs.getString("m_pwd"));
+				m.setM_name(rs.getString("m_name"));
+				m.setM_email(rs.getString("m_email"));
 				m.setM_regDate(String.valueOf(new Date()));
 				list.add(m);
 			}
@@ -94,7 +95,6 @@ public class MemberDAO {
 			while(rs.next()) {
 				Member temp = new Member();
 				temp.setM_idx(rs.getInt("m_idx"));
-				System.out.println("idx ? "+rs.getInt("m_idx"));
 				temp.setM_id(rs.getString("m_id"));
 				temp.setM_pwd(rs.getString("m_pwd"));
 				temp.setM_name(rs.getString("m_name"));
@@ -117,17 +117,20 @@ public class MemberDAO {
 			// 미리연결한 DataSource 받아오기
 			dataSource = (DataSource)envCon.lookup("jdbc/mysql");// 톰캣 context.xml에 설정한 name값
 			conn = dataSource.getConnection();
-			int idx = 5; 
+		
 			String sql = "insert into member values(?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, String.valueOf(idx));
+			ps.setInt(1, m.getM_idx());
 			ps.setString(2, m.getM_id());
 			ps.setString(3, m.getM_pwd());
 			ps.setString(4, m.getM_name());
 			ps.setString(5, m.getM_email());
-			ps.setString(6, "2021-07-20");
-			idx++;
+			ps.setString(6, m.getM_regDate());
+		
 			int cnt  = ps.executeUpdate();
+			if(cnt>0) {
+				System.out.println("add Success");
+			}
 			result = true;
 		}catch(Exception e) {
 			e.printStackTrace();

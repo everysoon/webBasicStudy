@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.soon.dao.MemberDAO;
+import kr.or.soon.dao.MemberDAO_MySql;
 import kr.or.soon.dto.Member;
 
-@WebServlet("/member")
+@WebServlet("/jdbc")
 public class Servlet08_JDBC extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=utf-8");
-		MemberDAO dao = new MemberDAO();
+		MemberDAO_MySql dao = new MemberDAO_MySql();
 		
 		List<Member> mList = dao.getListMemebers();
 		PrintWriter pw = resp.getWriter();

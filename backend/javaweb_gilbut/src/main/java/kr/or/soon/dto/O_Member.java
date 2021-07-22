@@ -2,19 +2,28 @@ package kr.or.soon.dto;
 
 import java.util.Date;
 
-public class Member {
-	private int m_idx = 6 ;
-	private String m_id,m_pwd,m_name,m_email,m_regDate;
-	public Member() {
+public class O_Member {
+	private int m_idx;
+	private String m_id,m_pwd,m_name,m_email;
+	private Date m_regDate;
+	public O_Member() {
 		
 	}
-	public Member(String m_id, String m_pwd, String m_name, String m_email) {
-		++this.m_idx;
+	public O_Member(String m_id, String m_pwd, String m_name, String m_email) {
 		this.m_id = m_id;
 		this.m_pwd = m_pwd;
 		this.m_name = m_name;
 		this.m_email = m_email;
-		this.m_regDate =String.valueOf(new Date());
+	}
+	
+	public O_Member(int m_idx, String m_id, String m_pwd, String m_name, String m_email, Date m_regDate) {
+		super();
+		this.m_idx = m_idx;
+		this.m_id = m_id;
+		this.m_pwd = m_pwd;
+		this.m_name = m_name;
+		this.m_email = m_email;
+		this.m_regDate = m_regDate;
 	}
 	public int getM_idx() {
 		return m_idx;
@@ -46,17 +55,18 @@ public class Member {
 	public void setM_email(String m_email) {
 		this.m_email = m_email;
 	}
-	public String getM_regDate() {
+
+	public Date getM_regDate() {
 		return m_regDate;
 	}
-	public void setM_regDate(String m_regDate) {
+	public void setM_regDate(Date m_regDate) {
 		this.m_regDate = m_regDate;
 	}
 	@Override
 	public String toString() {
-		return "Member [m_idx=" + m_idx + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_email="
+		return "O_Member [m_idx=" + m_idx + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_email="
 				+ m_email + ", m_regDate=" + m_regDate + "]";
 	}
-	
+
 	
 }

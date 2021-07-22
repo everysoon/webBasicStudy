@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.or.soon.dao.MemberDAO;
+import kr.or.soon.dao.MemberDAO_MySql;
 import kr.or.soon.dto.Member;
 
 @WebServlet("/loginWithDB")
@@ -31,7 +31,7 @@ public class LoginWithDB extends HttpServlet {
 		member.setM_name("minsoon");
 		member.setM_email("soon@sch.ac.kr");
 		member.setM_regDate(String.valueOf(new Date()));
-		MemberDAO dao = new MemberDAO();
+		MemberDAO_MySql dao = new MemberDAO_MySql();
 //		dao.addMember(member);
 		boolean result = dao.isExisted(member);
 		if (result) {

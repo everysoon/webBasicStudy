@@ -1,6 +1,6 @@
 <%@page import="kr.or.soon.dto.Member"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.or.soon.dao.MemberDAO"%>
+<%@page import="kr.or.soon.dao.MemberDAO_MySql"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
