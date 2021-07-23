@@ -9,13 +9,15 @@ request.setCharacterEncoding("utf-8");
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jqeury.com/jqeury-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	function readURL(input) {
 		if (input.files && input.files[0]) {
+			console.log("input.files :"+input.files);
 			var reader = new FileReader();
 			reader.onload = function(e) {
 				$("#preview").attr("src", e.target.result);
+				console.log("e.target.result : "+e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -50,7 +52,7 @@ h1 {
 			</tr>
 			<tr>
 				<td align="right">이미지파일 첨부 :</td>
-				<td colspan="2"><input type="file" onchange="readURL(this);"
+				<td colspan="2"><input type="file" onchange="readURL(this)"
 					name="imgFileName" /></td>
 				<td><img id="preview" src="#" width="200" height="200" /></td>
 			</tr>

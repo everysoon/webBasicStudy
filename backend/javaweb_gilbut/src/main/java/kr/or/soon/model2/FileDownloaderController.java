@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/download.do")
 public class FileDownloaderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String ARITICLE_IMAGE_REPO ="C:\\Users\\ict01-103\\Documents\\webBasicStudy\\backend\\javaweb_gilbut\\src\\main\\webapp\\WEB-INF\\img";
+//	private static String ARITICLE_IMAGE_REPO ="C:\\Users\\ict01-103\\Documents\\webBasicStudy\\backend\\javaweb_gilbut\\src\\main\\webapp\\WEB-INF\\img";
+	private static String ARITICLE_IMAGE_REPO = "C:\\Users\\MINSUN\\Desktop\\myBasicWebStudy\\backend\\gilbut_board_img";
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request,response);
@@ -29,7 +30,7 @@ public class FileDownloaderController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String imgFileName = (String)request.getParameter("imgFileName");
 		String articleNO = request.getParameter("articleNO");
-		System.out.println("imgFileName : "+imgFileName);
+		System.out.println("fileDownloader 속 imgFileName : "+imgFileName);
 		OutputStream out = response.getOutputStream();
 		// 글 번호에 대한 경로 설정
 		String path = ARITICLE_IMAGE_REPO+"\\"+articleNO+"\\"+imgFileName;

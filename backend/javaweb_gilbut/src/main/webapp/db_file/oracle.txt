@@ -1,15 +1,33 @@
+create table board(
+articleNO number(10) primary key,
+parentNO number(10) default 0,
+title varchar2(500) not null,
+content varchar2(4000),
+imgFileName varchar2(100),
+writedate date default sysdate not null,
+m_id varchar2(10),
+FOREIGN key(m_id) REFERENCES member(m_id)
+);
+drop table board;
 create table member(
-m_idx NUMBER not null primary key ,
-m_id varchar(10) ,
+m_id varchar(10) primary key,
 m_pwd varchar(20),
 m_name varchar(20),
 m_email varchar(30),
 m_regdate date default sysdate
 );
-insert into member values (id_seq.NEXTVAL,'everysoon','1111','minsun','min@naver.com',sysdate);
-select * from member;
-delete from member;
-create SEQUENCE id_seq
-  INCREMENT BY 1 MAXVALUE 5000 CYCLE;
+INSERT INTO member VALUES('hong','1111','hong','hong@naver.com',sysdate);
+INSERT INTO member VALUES('min','1111','min','min@naver.com',sysdate);
+INSERT INTO member VALUES('soon','1111','soon','soon@naver.com',sysdate);
+INSERT INTO member VALUES('sun','1111','sun','sun@naver.com',sysdate);
+INSERT INTO member VALUES('park','1111','park','park@naver.com',sysdate);
+INSERT INTO member VALUES('lee','1111','lee','lee@naver.com',sysdate);
 
-----------------------------------------------------------------------
+
+INSERT INTO board VALUES(1,0,'테스트글','테스트글임니더',null,sysdate,'hong');
+INSERT INTO board VALUES(2,0,'오늘은','일찍깨서공부좀하자',null,sysdate,'min');
+INSERT INTO board VALUES(3,2,'오라클','오라클',null,sysdate,'soon');
+INSERT INTO board VALUES(4,0,'수니','운동안한지..어언..',null,sysdate,'sun');
+INSERT INTO board VALUES(5,3,'때지','돼지됐다',null,sysdate,'park');
+INSERT INTO board VALUES(6,2,'상품후기','이순신씨의 상품후기를 올림니더',null,sysdate,'lee');
+commit;

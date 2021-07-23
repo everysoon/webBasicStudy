@@ -25,11 +25,16 @@
 		maxWait="10000" username="root" password="ict01"
 		driverClassName="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/springDB?useSSL=false" />
-	<Resource name="jdbc/oracle" auth="Container"
+		<!-- ict컴퓨터오라클 -->
+<!-- 	<Resource name="jdbc/oracle" auth="Container"
 		type="javax.sql.DataSource" username="c##ictedu" password="1111"
 		maxActive="100" maxIdle="30" maxWait="-1"
 		driverClassName="oracle.jdbc.OracleDriver"
-		url="jdbc:oracle:thin:@192.168.0.21:1521:xe" />
-
-
+		url="jdbc:oracle:thin:@192.168.0.21:1521:xe" /> -->
+<!-- 민선컴퓨터오라클 -->
+<Resource name="jdbc/oracle" auth="Container"
+		type="javax.sql.DataSource" username="c##ictedu" password="1111"
+		maxActive="100" maxIdle="30" maxWait="-1"
+		driverClassName="oracle.jdbc.OracleDriver"
+		url="jdbc:oracle:thin:@192.168.219.180:1521:xe" />
 </Context>

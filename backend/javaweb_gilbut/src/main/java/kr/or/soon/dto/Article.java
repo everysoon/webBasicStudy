@@ -34,6 +34,16 @@ public class Article {
 		this.m_id = m_id;
 		this.writedate = writedate;
 	}
+	public Article(int level,int articleNO, int parentNO, String title,  String m_id,
+			Date writedate) {
+		
+		this.level = level;
+		this.articleNO = articleNO;
+		this.parentNO = parentNO;
+		this.title = title;
+		this.m_id = m_id;
+		this.writedate = writedate;
+	}
 
 	public int getLevel() {
 		return level;

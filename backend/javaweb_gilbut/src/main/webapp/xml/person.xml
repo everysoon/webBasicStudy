@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="personService" class="kr.or.soon.spring.impl.PersonServiceImpl">
+	<property name="name">
+		<value>minsun</value>
+	</property>
+	
+	</bean>
+	<bean id="personServiceConstructor" class="kr.or.soon.spring.impl.PersonServiceImpl">
+	<constructor-arg value="minsun"></constructor-arg>
+	<constructor-arg value="25"></constructor-arg>
+	</bean>
+</beans>
