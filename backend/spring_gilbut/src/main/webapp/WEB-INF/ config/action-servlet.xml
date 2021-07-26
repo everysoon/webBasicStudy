@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc	 https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans		 https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 			   http://www.springframework.org/schema/aop
+			   http://www.springframework.org/schema/aop/spring-aop.xsd		https://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop">
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/member/" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+	<bean id="memberController"
+		class="kr.or.soon.controller.MemberControllerImpl">
+		
+		<property name="service" ref="memberService" />
+	</bean>
+	<bean id="simpleUrlController"
+		class="kr.or.soon.controller.SimpleUrlController" />
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/member/*.do">userController</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="userController"
+		class="kr.or.soon.controller.UserController">
+		<property name="methodNameResolver">
+			<ref bean="userMethodNameResolver" />
+		</property>
+	</bean>
+	<bean id="userMethodNameResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/member/listMembers.do">listMembers</prop>
+				<prop key="/member/addMember.do">addMember</prop>
+				<prop key="/member/removeMember.do">removeMember</prop>
+				<prop key="/member/memberForm.do">memberForm</prop>
+				<prop key="/member/memberDetail.do">memberDetail</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

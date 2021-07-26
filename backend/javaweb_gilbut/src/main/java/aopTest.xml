@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="calcTarget" class="kr.or.soon.spring.aop.Calculator" /> <!-- 타깃 클래스 빈 지정 -->
+	<bean id="logAdvice" class="kr.or.soon.spring.aop.LoggingAdvice" /> <!-- 로그 기능하는 어드바이스 빈 지정 -->
+	<bean id="proxyCal"
+		class="org.springframework.aop.framework.ProxyFactoryBean"> <!-- 스프링에서 제공하는 ProxtFactoryBean 이용해 타깃과 어드바이스 이어주기 -->
+		<property name="target" ref="calcTarget" />
+
+		<property name="interceptorNames">
+			<list>
+				<value>logAdvice</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
