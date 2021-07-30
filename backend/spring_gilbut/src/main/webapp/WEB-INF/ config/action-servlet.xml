@@ -19,7 +19,7 @@
 	<bean id="memberController"
 		class="kr.or.soon.controller.MemberControllerImpl">
 		
-		<property name="service" ref="memberService" />
+		<property name="service" ref="service" />
 	</bean>
 	<bean id="simpleUrlController"
 		class="kr.or.soon.controller.SimpleUrlController" />
