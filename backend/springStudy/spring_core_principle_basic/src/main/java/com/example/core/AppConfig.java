@@ -10,7 +10,6 @@ import com.example.core.member.MemberService;
 import com.example.core.member.MemberServiceImpl;
 import com.example.core.member.MemoryMemberRepository;
 import com.example.core.order.OrderService;
-import com.example.core.order.OrderServiceImpl;
 
 @Configuration
 public class AppConfig {
@@ -41,6 +40,8 @@ public class AppConfig {
 	@Bean
 	public OrderService orderService() {
 		System.out.println("orderService call");
-		return new OrderServiceImpl(memberRepository(), discountPolicy());
+		return null;
+//		return new OrderServiceImpl(memberRepository(), discountPolicy());
+
 	}
 }
