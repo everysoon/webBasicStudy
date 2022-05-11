@@ -1,0 +1,21 @@
+package com.example.core.discount;
+
+import com.example.core.member.Grade;
+import com.example.core.member.Member;
+
+public class FixDiscountPolicy implements DiscountPolicy {
+
+	private int discountFixAmount = 1000; // 1000원 할인
+
+	@Override
+	public int discount(Member member, int price) {
+		if (member.getGrade() == Grade.VIP) // enum type 은 == 으로비교
+		{
+			return discountFixAmount;
+		} else {
+			return 0;
+		}
+
+	}
+
+}
