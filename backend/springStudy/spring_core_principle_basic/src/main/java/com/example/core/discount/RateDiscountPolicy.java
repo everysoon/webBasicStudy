@@ -6,6 +6,7 @@ import com.example.core.member.Grade;
 import com.example.core.member.Member;
 
 @Component
+//@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
 	private int discountPercent = 10;
